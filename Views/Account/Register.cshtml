@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+<div class="container">
+    <h2 class="text-center">注册</h2>
+
+    <form id="Register" action="@Url.Action("RegisterLogin", "Account")" method="post" onsubmit="return CheckRegisterForm()" class="needs-validation" novalidate>
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">用户名:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+            <div class="invalid-feedback">
+                请输入用户名。
+            </div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="phone" class="form-label">手机号:</label>
+            <input type="text" class="form-control" id="phone" name="phone" required>
+            <div class="invalid-feedback">
+                请输入有效的11位手机号。
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="pwd" class="form-label">密码:</label>
+            <input type="password" class="form-control" id="pwd" name="password" required>
+            <div class="invalid-feedback">
+                请输入密码。
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="state" class="form-label">省份：</label>
+            <input type="text" class="form-control" id="state" name="state" required>
+            <div class="invalid-feedback">
+                请输入省份。
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="city" class="form-label">城市：</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+            <div class="invalid-feedback">
+                请输入城市。
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">具体地址：</label>
+            <input type="text" class="form-control" id="address" name="adress" required>
+            <div class="invalid-feedback">
+                请输入具体地址。
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">注册</button>
+    </form>
+    <script type="text/javascript">
+        function CheckRegisterForm() {
+            var name = document.getElementById('name').value.trim();
+            var phone = document.getElementById('phone').value.trim();
+            var psw = document.getElementById('pwd').value.trim();
+            var psw = document.getElementById('state').value.trim();
+            var psw = document.getElementById('city').value.trim();
+            var psw = document.getElementById('address').value.trim();
+            if (!name) {
+                alert("用户名不能为空");
+                return false;
+            }
+            if (!phone || !/^\d{11}$/.test(phone)) {
+                alert("请输入有效的11位手机号");
+                return false;
+            }
+            if (!psw) {
+                alert("密码不能为空");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</div>

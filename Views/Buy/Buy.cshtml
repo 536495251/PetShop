@@ -1,0 +1,40 @@
+﻿@model MyPetShop_v3.Models.PurchaseResult
+@using MyPetShop_v3.Models
+@{
+    ViewBag.Title = "Purchase Result";
+}
+
+<h2>抢购结果</h2>
+
+@if (Model.IsSuccess == 1)
+{
+    <h2>抢购成功！</h2>
+
+    // 刷新母版页Session["LoggedInUser"]的值
+    <div class="ml-auto">
+        @if (Session["LoggedInUser"] != null)
+        {
+            var loggedInUser = (User)Session["LoggedInUser"];
+            <span> @ViewBag.PetID</span>
+            <span> @loggedInUser.Name</span>
+            <span> @loggedInUser.Phone</span>
+            <span>@loggedInUser.Balance</span>
+            <span>@loggedInUser.State</span>
+            <span>@loggedInUser.City</span>
+            <span>@loggedInUser.Address</span>
+            if (loggedInUser.IsVip)
+            {
+                <span>VIP用户</span>
+            }
+        }
+    </div>
+}
+else
+{
+    <h2>抢购失败！: @Model.ErrorMessage</h2>
+}
+<a href="@Url.Action("Index", "Home")" class="btn btn-primary">返回主页</a>
+
+
+
+

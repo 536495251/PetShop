@@ -1,0 +1,35 @@
+﻿@using MyPetShop_v3.Models
+@{
+    ViewBag.Title = "My";
+    User loggedInUser = (User)Session["LoggedInUser"];
+}
+
+<div class="ml-auto">
+    @if (loggedInUser != null)
+    {
+        <span> @loggedInUser.Name</span>
+        <span> @loggedInUser.Phone</span>
+        <span>@loggedInUser.Balance</span>
+        <span>@loggedInUser.State</span>
+        <span>@loggedInUser.City</span>
+        <span>@loggedInUser.Address</span>
+        if (loggedInUser.IsVip)
+        {
+            <span>VIP用户</span>
+        }
+    }
+</div>
+<div>
+
+
+
+    <form id="Recharge" action="@Url.Action("Recharge", "Account")" method="post" class="needs-validation" novalidate>
+
+        <div class="form-check mb-3">
+            <input class="form-control" type="number" id="money" name="money">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">充值</button>
+    </form>
+</div>
+
+
